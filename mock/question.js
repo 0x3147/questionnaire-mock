@@ -41,9 +41,41 @@ module.exports = [
       return {
         errno: 0,
         data: {
-          list: getQuestionList({ len: pageSize, isStar, isDeleted }),
+          list: getQuestionList({ pageSize, isStar, isDeleted }),
           total: 100
         }
+      }
+    }
+  },
+  {
+    // 标记
+    url: '/api/question/starOrRemove/:id',
+    method: 'post',
+    response() {
+      return {
+        errno: 0
+      }
+    }
+  },
+  {
+    // 复制
+    url: '/api/question/duplicate/:id',
+    method: 'post',
+    response() {
+      return {
+        errno: 0,
+        data: {
+          id: Random.id()
+        }
+      }
+    }
+  },
+  {
+    url: '/api/question/delete',
+    method: 'post',
+    response() {
+      return {
+        errno: 0
       }
     }
   }
